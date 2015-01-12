@@ -1,8 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-IP=["192.168.42.101", "192.168.42.102", "192.168.42.103", "192.168.42.104", "192.168.42.105", "192.168.42.106", "192.168.42.107", "192.168.42.108", "192.168.42.109", "192.168.42.110", "192.168.42.111", "192.168.42.112", "192.168.42.113", "192.168.42.114"]
-NAME=["fed-plain", "fed", "fed-hdfs", "fed-yarn", "fed-node", "fed-hive", "fed-hbase", "deb-plain", "deb", "deb-hdfs", "deb-yarn", "deb-node", "deb-hive", "deb-hbase"]
+IP=["192.168.42.101", "192.168.42.102", "192.168.42.103", "192.168.42.104", "192.168.42.105", "192.168.42.106", "192.168.42.107", "192.168.42.108", "192.168.42.109", "192.168.42.110", "192.168.42.111", "192.168.42.112", "192.168.42.113", "192.168.42.114", "192.168.42.115", "192.168.42.116", "192.168.42.117"]
+NAME=["fed-plain", "fed", "fed-hdfs", "fed-yarn", "fed-node", "fed-hive", "fed-hbase", "deb-plain", "deb", "deb-hdfs", "deb-yarn", "deb-node", "deb-hive", "deb-hbase", "deb-hive-hdfs","deb-hive-yarn", "deb-hive-node"]
 DOMAIN="vagrant"
 # offsets in the IP/NAME arrays
 FED=0
@@ -36,7 +36,7 @@ hostname > /etc/hostname
 SCRIPT
   config.vm.provision "shell", run: "always" do |s|
     s.inline = $script
-    s.args   = [DOMAIN, IP[0], NAME[0], IP[1], NAME[1], IP[2], NAME[2], IP[3], NAME[3], IP[4], NAME[4], IP[5], NAME[5], IP[6], NAME[6], IP[7], NAME[7], IP[8], NAME[8], IP[9], NAME[9], IP[10], NAME[10], IP[11], NAME[11], IP[12], NAME[12], IP[13], NAME[13]]
+    s.args   = [DOMAIN, IP[0], NAME[0], IP[1], NAME[1], IP[2], NAME[2], IP[3], NAME[3], IP[4], NAME[4], IP[5], NAME[5], IP[6], NAME[6], IP[7], NAME[7], IP[8], NAME[8], IP[9], NAME[9], IP[10], NAME[10], IP[11], NAME[11], IP[12], NAME[12], IP[13], NAME[13], IP[14], NAME[14], IP[15], NAME[15], IP[16], NAME[16], IP[17], NAME[17], IP[18], NAME[18], IP[19], NAME[19]]
   end
   config.vm.provision "shell", inline: "/vagrant/scripts/bootstrap.sh"
 
@@ -200,6 +200,48 @@ SCRIPT
       puppet.manifests_path = "manifests"
       puppet.module_path    = "modules"
       puppet.manifest_file  = "hbase/simple.pp"
+    end
+  end
+
+  config.vm.define NAME[DEB+7] do |deb|
+    deb.vm.box = "cargomedia/debian-7-amd64-plain"
+    deb.vm.network "private_network", ip: IP[DEB+7]
+    deb.vm.hostname=NAME[DEB+7]
+    deb.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.module_path    = "modules"
+      puppet.manifest_file  = "hive/cluster.pp"
+    end
+    deb.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+  end
+
+  config.vm.define NAME[DEB+8] do |deb|
+    deb.vm.box = "cargomedia/debian-7-amd64-plain"
+    deb.vm.network "private_network", ip: IP[DEB+8]
+    deb.vm.hostname=NAME[DEB+8]
+    deb.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.module_path    = "modules"
+      puppet.manifest_file  = "hive/cluster.pp"
+    end
+    deb.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+  end
+
+  config.vm.define NAME[DEB+9] do |deb|
+    deb.vm.box = "cargomedia/debian-7-amd64-plain"
+    deb.vm.network "private_network", ip: IP[DEB+9]
+    deb.vm.hostname=NAME[DEB+9]
+    deb.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.module_path    = "modules"
+      puppet.manifest_file  = "hive/cluster.pp"
+    end
+    deb.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
   end
 
