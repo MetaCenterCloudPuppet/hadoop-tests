@@ -5,7 +5,7 @@ debs_hive=deb-hive-hdfs deb-hive-yarn deb-hive-node
 
 all: deb
 
-fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive):
+fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive) hive-mysql hive-postgresql:
 	vagrant up $@
 
 feds: $(feds)
