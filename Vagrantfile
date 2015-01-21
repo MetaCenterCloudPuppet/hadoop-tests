@@ -28,6 +28,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   f21_image="hansode/fedora-21-server-x86_64"
   deb7_image="cargomedia/debian-7-amd64-plain"
 
+  # single-node cluster
+  big_memory="4096"
+  # nodes
+  small_memory="2048"
+
   $script = <<SCRIPT
 domain="${1}"
 network="${2}"
@@ -57,7 +62,7 @@ SCRIPT
   config.vm.synced_folder "manifests/", "/etc/puppet/manifests"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "4096"]
+    vb.customize ["modifyvm", :id, "--memory", big_memory]
   end
 
   IP=INITIAL_IP
@@ -89,7 +94,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -103,7 +108,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -117,7 +122,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -164,7 +169,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -178,7 +183,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -192,7 +197,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     fed.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -223,7 +228,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -237,7 +242,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -251,7 +256,7 @@ SCRIPT
       puppet.manifest_file  = "cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -287,7 +292,7 @@ SCRIPT
       puppet.manifest_file  = "hive/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -301,7 +306,7 @@ SCRIPT
       puppet.manifest_file  = "hive/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -315,7 +320,7 @@ SCRIPT
       puppet.manifest_file  = "hive/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -362,7 +367,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -376,7 +381,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
@@ -390,7 +395,7 @@ SCRIPT
       puppet.manifest_file  = "accounting/cluster.pp"
     end
     deb.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ["modifyvm", :id, "--memory", small_memory]
     end
   end
 
