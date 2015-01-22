@@ -67,6 +67,7 @@ node default {
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
   Class['hadoop::namenode::service'] -> Class['hive::server2::service']
   Class['postgresql::lib::java'] -> Class['hive::metastore::config']
+  Class['hive::metastore::install'] -> Postgresql::Server::Db['metastore']
   Postgresql::Server::Db['metastore'] -> Class['hive::metastore::service']
   Exec['metastore-import'] -> Class['hive::metastore::service']
 }

@@ -64,6 +64,7 @@ node default {
   Class['hadoop::namenode::service'] -> Class['hive::hdfs']
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
   Class['hadoop::namenode::service'] -> Class['hive::server2::service']
+  Class['hive::metastore::install'] -> Mysql::Db['metastore']
   Mysql::Db['metastore'] -> Class['hive::metastore::service']
   Class['mysql::bindings'] -> Class['hive::metastore::config']
 }
