@@ -7,7 +7,7 @@ debs_acc=deb-acc-hdfs deb-acc-yarn deb-acc-node
 
 all: deb
 
-fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) fed-acc $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive) hive-mysql hive-postgresql deb-acc $(debs_acc):
+fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) fed-acc $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive) hive-mysql hive-postgresql deb-acc $(debs_acc) deb-oozie:
 	vagrant up $@
 
 feds: $(feds)
