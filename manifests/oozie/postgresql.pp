@@ -17,6 +17,8 @@ class{'hadoop':
 class{'oozie':
   hdfs_hostname => $::fqdn,
   realm => '',
+  db => 'postgresql',
+  db_password => 'oopass',
 }
 
 node default {
@@ -37,8 +39,21 @@ node default {
   }
   include site_hadoop::devel::hadoop
 
+  class { 'postgresql::server':
+    listen_addresses => 'localhost',
+  }
+
+  include postgresql::lib::java
+
+  postgresql::server::db { 'oozie':
+    user     => 'oozie',
+    password => postgresql_password('oozie', 'oopass'),
+  }
+
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
   Class['hadoop::namenode::service'] -> Class['oozie::hdfs']
   Class['hadoop::datanode::service'] -> Class['oozie::server::config']
   Class['oozie::hdfs'] -> Class['oozie::server::config']
+  Class['postgresql::lib::java'] -> Class['oozie::server::config']
+  Postgresql::Server::Db['oozie'] -> Class['oozie::server::service']
 }

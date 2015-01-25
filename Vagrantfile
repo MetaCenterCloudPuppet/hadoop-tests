@@ -6,7 +6,7 @@ NAME=["fed-plain", "fed", "fed-hdfs", "fed-yarn", "fed-node",
       "fed-acc-node", "deb-plain", "deb", "deb-hdfs", "deb-yarn",
       "deb-node", "deb-hive", "deb-hbase", "deb-hive-hdfs", "deb-hive-yarn",
       "deb-hive-node", "hive-mysql", "hive-postgresql", "deb-acc", "deb-acc-hdfs",
-      "deb-acc-yarn", "deb-acc-node", "deb-oozie"]
+      "deb-acc-yarn", "deb-acc-node", "deb-oozie", "oozie-mysql", "oozie-postgresql"]
 DOMAIN="vagrant"
 NETWORK="192.168.42"
 INITIAL_IP=101
@@ -54,7 +54,7 @@ hostname > /etc/hostname
 SCRIPT
   config.vm.provision "shell", run: "always" do |s|
     s.inline = $script
-    s.args   = [DOMAIN, NETWORK, INITIAL_IP, NAME[0], NAME[1], NAME[2], NAME[3], NAME[4], NAME[5], NAME[6], NAME[7], NAME[8], NAME[9], NAME[10], NAME[11], NAME[12], NAME[13], NAME[14], NAME[15], NAME[16], NAME[17], NAME[18], NAME[19], NAME[20], NAME[21], NAME[22], NAME[23], NAME[24], NAME[25], NAME[26], NAME[27]]
+    s.args   = [DOMAIN, NETWORK, INITIAL_IP, NAME[0], NAME[1], NAME[2], NAME[3], NAME[4], NAME[5], NAME[6], NAME[7], NAME[8], NAME[9], NAME[10], NAME[11], NAME[12], NAME[13], NAME[14], NAME[15], NAME[16], NAME[17], NAME[18], NAME[19], NAME[20], NAME[21], NAME[22], NAME[23], NAME[24], NAME[25], NAME[26], NAME[27], NAME[28], NAME[29]]
   end
   config.vm.provision "shell", inline: "/vagrant/scripts/bootstrap.sh"
 
@@ -407,6 +407,28 @@ SCRIPT
       puppet.manifests_path = "manifests"
       puppet.module_path    = "modules"
       puppet.manifest_file  = "oozie/simple.pp"
+    end
+  end
+
+  config.vm.define NAME[DEB+17] do |deb|
+    deb.vm.box = deb7_image
+    deb.vm.network "private_network", ip: NETWORK + '.' + (IP+DEB+17).to_s
+    deb.vm.hostname=NAME[DEB+17]
+    deb.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.module_path    = "modules"
+      puppet.manifest_file  = "oozie/mysql.pp"
+    end
+  end
+
+  config.vm.define NAME[DEB+18] do |deb|
+    deb.vm.box = deb7_image
+    deb.vm.network "private_network", ip: NETWORK + '.' + (IP+DEB+18).to_s
+    deb.vm.hostname=NAME[DEB+18]
+    deb.vm.provision :puppet do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.module_path    = "modules"
+      puppet.manifest_file  = "oozie/postgresql.pp"
     end
   end
 

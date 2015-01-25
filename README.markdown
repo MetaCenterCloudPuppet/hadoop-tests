@@ -60,3 +60,9 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
 ## Oozie
     #single node
     make deb-oozie
+
+    # mysql (single node)
+    make oozie-mysql
+
+    # postgresql (single node)
+    make oozie-postgresql
