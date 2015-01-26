@@ -51,7 +51,6 @@ node default {
   }
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['oozie::hdfs']
   Class['hadoop::datanode::service'] -> Class['oozie::server::config']
   Class['oozie::hdfs'] -> Class['oozie::server::config']
   Class['postgresql::lib::java'] -> Class['oozie::server::config']

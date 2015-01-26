@@ -43,7 +43,6 @@ node default {
   include site_hadoop::devel::hadoop
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['hive::hdfs']
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
   Class['hadoop::namenode::service'] -> Class['hive::server2::service']
 }

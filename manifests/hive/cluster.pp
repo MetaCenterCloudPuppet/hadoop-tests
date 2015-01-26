@@ -51,7 +51,6 @@ node 'deb-hdfs', 'fed-hdfs' {
   include hive::metastore
 
   Class['hadoop::namenode'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['hive::hdfs']
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
 }
 

@@ -63,7 +63,6 @@ node default {
   include postgresql::lib::java
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['hive::hdfs']
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
   Class['hadoop::namenode::service'] -> Class['hive::server2::service']
   Class['postgresql::lib::java'] -> Class['hive::metastore::config']
