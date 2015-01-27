@@ -51,6 +51,5 @@ node default {
   }
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['hbase::hdfs']
   Class['hadoop::namenode::service'] -> Class['hbase::master::service']
 }
