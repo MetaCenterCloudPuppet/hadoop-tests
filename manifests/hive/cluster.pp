@@ -44,7 +44,7 @@ class{'hive':
   },
 }
 
-node 'deb-hdfs', 'fed-hdfs' {
+node 'deb-hive-hdfs', 'fed-hive-hdfs' {
   include hadoop::namenode
   include site_hadoop::devel::hadoop
   include hive::hdfs
@@ -54,13 +54,13 @@ node 'deb-hdfs', 'fed-hdfs' {
   Class['hadoop::namenode::service'] -> Class['hive::metastore::service']
 }
 
-node 'deb-yarn', 'fed-yarn' {
+node 'deb-hive-yarn', 'fed-hive-yarn' {
   include hadoop::resourcemanager
   include hadoop::historyserver
   include hive::server2
 }
 
-node 'deb-node', 'fed-node' {
+node 'deb-hive-node', 'fed-hive-node' {
   include hadoop::datanode
   include hadoop::nodemanager
   include hadoop::frontend
