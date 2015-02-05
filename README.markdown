@@ -66,3 +66,10 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
 
     # postgresql (single node)
     make oozie-postgresql
+
+## Pig
+    #single node
+    make deb-pig
+
+    #cluster
+    make -j3 debs-pig
