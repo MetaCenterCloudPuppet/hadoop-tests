@@ -28,6 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   f21_image="hansode/fedora-21-server-x86_64"
   deb7_image="cargomedia/debian-7-amd64-plain"
+  #deb7_image="ubuntu/trusty64"
+  # not supported: ubuntu/precise, ubuntu/lucid, puppetlabs/centos-6.5-64-puppet
 
   # single-node cluster
   big_memory="4096"

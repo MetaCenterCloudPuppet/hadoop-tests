@@ -2,8 +2,10 @@
 
 Available platforms:
 
- * Debian 7
+ * Debian 7/wheezy
  * Fedora 21
+ * (Ubuntu 14/trusty)
+ * (RedHat 6)
 
 Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient Makefile for parallel launch.
 
