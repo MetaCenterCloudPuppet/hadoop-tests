@@ -59,6 +59,9 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
     # postgresql (single node)
     make hive-postgresql
 
+    # server-less
+    make hive-ultrasimple
+
 ## Oozie
     #single node
     make deb-oozie

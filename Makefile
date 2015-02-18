@@ -8,7 +8,7 @@ debs_pig=deb-pig-hdfs deb-pig-yarn deb-pig-node
 
 all: deb
 
-fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) fed-acc $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive) hive-mysql hive-postgresql deb-acc $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig):
+fed fed-plain $(feds) fed-hive fed-hbase $(feds_hive) fed-acc $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase $(debs_hive) hive-mysql hive-postgresql deb-acc $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig) hive-ultrasimple:
 	vagrant up $@
 
 feds: $(feds)
