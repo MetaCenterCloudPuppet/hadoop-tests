@@ -46,6 +46,10 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
     make deb-hbase
     make fed-hbase
 
+    # single node, with thrift and rest servers
+    make deb-hbase-gates
+    make fed-hbase-gates
+
 ## Hive
     #single node
     make deb-hive
@@ -78,3 +82,7 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
 
     #cluster
     make -j3 debs-pig
+
+## Zookeeper
+    # cluster
+    make -j3 debs-zoo

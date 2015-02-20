@@ -22,24 +22,26 @@ deb7_image='cargomedia/debian-7-amd64-plain'
 # requires special puppet+ruby: ubuntu/precise, ubuntu/lucid, puppetlabs/centos-6.5-64-puppet
 
 BOX=[
-	{ :name => 'fed-plain',        :image => f21_image,  :memory => big_memory },
+	{ :name => 'fed-plain',        :image => f21_image,  :memory => daemon_memory },
 	{ :name => 'fed',              :image => f21_image,  :manifest => 'simple.pp', :memory => big_memory },
 	{ :name => 'fed-hdfs',         :image => f21_image,  :manifest => 'cluster.pp', :memory => daemon_memory },
 	{ :name => 'fed-yarn',         :image => f21_image,  :manifest => 'cluster.pp', :memory => daemon_memory },
 	{ :name => 'fed-node',         :image => f21_image,  :manifest => 'cluster.pp', :memory => node_memory },
 	{ :name => 'fed-hive',         :image => f21_image,  :manifest => 'hive/simple.pp', :memory => big_memory },
-	{ :name => 'fed-hbase',        :image => f21_image,  :manifest => 'hbase/simple-zoo.pp', :memory => big_memory },
+	{ :name => 'fed-hbase',        :image => f21_image,  :manifest => 'hbase/simple.pp', :memory => big_memory },
+	{ :name => 'fed-hbase-gates',  :image => f21_image,  :manifest => 'hbase/gateways.pp', :memory => big_memory },
 	{ :name => 'fed-acc',          :image => f21_image,  :manifest => 'accounting/simple.pp', :memory => big_memory },
 	{ :name => 'fed-acc-hdfs',     :image => f21_image,  :manifest => 'accounting/cluster.pp', :memory => daemon_memory },
 	{ :name => 'fed-acc-yarn',     :image => f21_image,  :manifest => 'accounting/cluster.pp', :memory => daemon_memory },
 	{ :name => 'fed-acc-node',     :image => f21_image,  :manifest => 'accounting/cluster.pp', :memory => node_memory },
-	{ :name => 'deb-plain',        :image => deb7_image, :memory => big_memory },
+	{ :name => 'deb-plain',        :image => deb7_image, :memory => daemon_memory },
 	{ :name => 'deb',              :image => deb7_image, :manifest => 'simple.pp', :memory => big_memory },
 	{ :name => 'deb-hdfs',         :image => deb7_image, :manifest => 'cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-yarn',         :image => deb7_image, :manifest => 'cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-node',         :image => deb7_image, :manifest => 'cluster.pp', :memory => node_memory },
 	{ :name => 'deb-hive',         :image => deb7_image, :manifest => 'hive/simple.pp', :memory => big_memory },
 	{ :name => 'deb-hbase',        :image => deb7_image, :manifest => 'hbase/simple.pp', :memory => big_memory },
+	{ :name => 'deb-hbase-gates',  :image => deb7_image, :manifest => 'hbase/gateways.pp', :memory => big_memory },
 	{ :name => 'deb-hive-hdfs',    :image => deb7_image, :manifest => 'hive/cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-hive-yarn',    :image => deb7_image, :manifest => 'hive/cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-hive-node',    :image => deb7_image, :manifest => 'hive/cluster.pp', :memory => node_memory },
@@ -57,6 +59,9 @@ BOX=[
 	{ :name => 'deb-pig-yarn',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-pig-node',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => node_memory },
 	{ :name => 'hive-ultrasimple', :image => deb7_image, :manifest => 'hive/ultrasimple.pp', :memory => big_memory },
+	{ :name => 'deb-zoo1', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo2', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo3', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
 ]
 DOMAIN='vagrant'
 NETWORK='192.168.42'
@@ -89,7 +94,7 @@ hostname > /etc/hostname
 SCRIPT
   config.vm.provision 'shell', run: 'always' do |s|
     s.inline = $script
-    s.args   = [DOMAIN, NETWORK, INITIAL_IP, BOX[0][:name], BOX[1][:name], BOX[2][:name], BOX[3][:name], BOX[4][:name], BOX[5][:name], BOX[6][:name], BOX[7][:name], BOX[8][:name], BOX[9][:name], BOX[10][:name], BOX[11][:name], BOX[12][:name], BOX[13][:name], BOX[14][:name], BOX[15][:name], BOX[16][:name], BOX[17][:name], BOX[18][:name], BOX[19][:name], BOX[20][:name], BOX[21][:name], BOX[22][:name], BOX[23][:name], BOX[24][:name], BOX[25][:name], BOX[26][:name], BOX[27][:name], BOX[28][:name], BOX[29][:name], BOX[30][:name], BOX[31][:name], BOX[32][:name], BOX[33][:name], BOX[34][:name]]
+    s.args   = [DOMAIN, NETWORK, INITIAL_IP, BOX[0][:name], BOX[1][:name], BOX[2][:name], BOX[3][:name], BOX[4][:name], BOX[5][:name], BOX[6][:name], BOX[7][:name], BOX[8][:name], BOX[9][:name], BOX[10][:name], BOX[11][:name], BOX[12][:name], BOX[13][:name], BOX[14][:name], BOX[15][:name], BOX[16][:name], BOX[17][:name], BOX[18][:name], BOX[19][:name], BOX[20][:name], BOX[21][:name], BOX[22][:name], BOX[23][:name], BOX[24][:name], BOX[25][:name], BOX[26][:name], BOX[27][:name], BOX[28][:name], BOX[29][:name], BOX[30][:name], BOX[31][:name], BOX[32][:name], BOX[33][:name], BOX[34][:name], BOX[35][:name], BOX[36][:name], BOX[37][:name], BOX[38][:name], BOX[39][:name]]
   end
   config.vm.provision 'shell', inline: '/vagrant/scripts/bootstrap.sh'
 

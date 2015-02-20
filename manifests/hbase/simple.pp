@@ -1,3 +1,8 @@
+$external_zookeeper = $::operatingsystem ? {
+  fedora  => false,
+  default => true,
+}
+
 class{'hadoop':
   hdfs_hostname => $::fqdn,
   yarn_hostname => $::fqdn,
@@ -16,7 +21,7 @@ class{'hbase':
   hdfs_hostname => $::fqdn,
   master_hostname => $::fqdn,
   zookeeper_hostnames => [ $::fqdn ],
-  external_zookeeper => true,
+  external_zookeeper => $external_zookeeper,
   slaves => [ $::fqdn ],
   frontends => [ $::fqdn ],
   realm => '',
@@ -45,9 +50,13 @@ node default {
   }
   include site_hadoop::devel::hadoop
 
-  class{'zookeeper':
-    hostnames => [ $::fqdn ],
-    realm => '',
+  if $external_zookeeper {
+    class{'zookeeper':
+      hostnames => [ $::fqdn ],
+      realm => '',
+    }
+  } else {
+    include hbase::zookeeper
   }
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
