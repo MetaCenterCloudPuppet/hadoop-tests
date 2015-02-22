@@ -20,6 +20,7 @@ f21_image='hansode/fedora-21-server-x86_64'
 deb7_image='cargomedia/debian-7-amd64-plain'
 #deb7_image='ubuntu/trusty64'
 # requires special puppet+ruby: ubuntu/precise, ubuntu/lucid, puppetlabs/centos-6.5-64-puppet
+el6_image='puppetlabs/centos-6.5-64-nocm'
 
 BOX=[
 	{ :name => 'fed-plain',        :image => f21_image,  :memory => daemon_memory },
@@ -59,16 +60,14 @@ BOX=[
 	{ :name => 'deb-pig-yarn',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-pig-node',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => node_memory },
 	{ :name => 'hive-ultrasimple', :image => deb7_image, :manifest => 'hive/ultrasimple.pp', :memory => big_memory },
-	{ :name => 'deb-zoo1', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
-	{ :name => 'deb-zoo2', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
-	{ :name => 'deb-zoo3', :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo',          :image => deb7_image, :manifest => 'zookeeper/simple.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo1',         :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo2',         :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
+	{ :name => 'deb-zoo3',         :image => deb7_image, :manifest => 'zookeeper/cluster.pp', :memory => daemon_memory },
 ]
 DOMAIN='vagrant'
 NETWORK='192.168.42'
 INITIAL_IP=101
-# offsets in the IP/NAME arrays
-FED=0
-DEB=11
 
 VAGRANTFILE_API_VERSION = '2'
 

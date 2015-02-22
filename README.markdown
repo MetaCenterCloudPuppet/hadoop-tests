@@ -84,5 +84,8 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
     make -j3 debs-pig
 
 ## Zookeeper
+    # simple
+    make deb-zoo
+
     # cluster
     make -j3 debs-zoo
