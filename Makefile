@@ -9,7 +9,7 @@ debs_zoo=deb-zoo1 deb-zoo2 deb-zoo3
 
 all: deb
 
-fed fed-plain $(feds) fed-hive fed-hbase fed-hbase-gates $(feds_hive) fed-acc $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase deb-hbase-gates $(debs_hive) hive-mysql hive-postgresql deb-acc $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig) hive-ultrasimple $(debs_zoo):
+fed fed-plain $(feds) fed-hive fed-hbase fed-hbase-gates $(feds_hive) fed-acc fed-book $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase deb-hbase-gates $(debs_hive) hive-mysql hive-postgresql deb-acc deb-book $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig) hive-ultrasimple $(debs_zoo):
 	vagrant up $@
 
 feds: $(feds)

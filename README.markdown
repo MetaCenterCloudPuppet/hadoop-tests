@@ -41,6 +41,11 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
     make -j3 debs-acc
     make -j3 feds-acc
 
+## Hadoop Bookkeeping
+    # single node
+    make deb-book
+    make fed-book
+
 ## HBase
     # single node
     make deb-hbase
