@@ -94,3 +94,9 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
 
     # cluster
     make -j3 debs-zoo
+
+## Spark
+    # simple (with Hadoop)
+    make deb-spark
+    # cluster (with Hadoop)
+   make -j4 debs-spark
