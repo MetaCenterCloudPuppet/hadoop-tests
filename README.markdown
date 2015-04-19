@@ -98,5 +98,6 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
 ## Spark
     # simple (with Hadoop)
     make deb-spark
+
     # cluster (with Hadoop)
-   make -j4 debs-spark
+    make -j4 debs-spark
