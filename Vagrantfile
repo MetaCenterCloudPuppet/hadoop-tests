@@ -100,7 +100,7 @@ hostname > /etc/hostname
 SCRIPT
   config.vm.provision 'shell', run: 'always' do |s|
     s.inline = $script
-    s.args   = [DOMAIN, NETWORK, INITIAL_IP, BOX[0][:name], BOX[1][:name], BOX[2][:name], BOX[3][:name], BOX[4][:name], BOX[5][:name], BOX[6][:name], BOX[7][:name], BOX[8][:name], BOX[9][:name], BOX[10][:name], BOX[11][:name], BOX[12][:name], BOX[13][:name], BOX[14][:name], BOX[15][:name], BOX[16][:name], BOX[17][:name], BOX[18][:name], BOX[19][:name], BOX[20][:name], BOX[21][:name], BOX[22][:name], BOX[23][:name], BOX[24][:name], BOX[25][:name], BOX[26][:name], BOX[27][:name], BOX[28][:name], BOX[29][:name], BOX[30][:name], BOX[31][:name], BOX[32][:name], BOX[33][:name], BOX[34][:name], BOX[35][:name], BOX[36][:name], BOX[37][:name], BOX[38][:name], BOX[39][:name], BOX[40][:name], BOX[41][:name], BOX[42][:name], BOX[43][:name], BOX[44][:name], BOX[45][:name]]
+    s.args   = [DOMAIN, NETWORK, INITIAL_IP, BOX[0][:name], BOX[1][:name], BOX[2][:name], BOX[3][:name], BOX[4][:name], BOX[5][:name], BOX[6][:name], BOX[7][:name], BOX[8][:name], BOX[9][:name], BOX[10][:name], BOX[11][:name], BOX[12][:name], BOX[13][:name], BOX[14][:name], BOX[15][:name], BOX[16][:name], BOX[17][:name], BOX[18][:name], BOX[19][:name], BOX[20][:name], BOX[21][:name], BOX[22][:name], BOX[23][:name], BOX[24][:name], BOX[25][:name], BOX[26][:name], BOX[27][:name], BOX[28][:name], BOX[29][:name], BOX[30][:name], BOX[31][:name], BOX[32][:name], BOX[33][:name], BOX[34][:name], BOX[35][:name], BOX[36][:name], BOX[37][:name], BOX[38][:name], BOX[39][:name], BOX[40][:name], BOX[41][:name], BOX[42][:name], BOX[43][:name], BOX[44][:name], BOX[45][:name], BOX[46][:name], BOX[47][:name]]
   end
   config.vm.provision 'shell', inline: '/vagrant/scripts/bootstrap.sh'
 
