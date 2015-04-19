@@ -14,6 +14,7 @@ class{'hadoop':
 
 class{'spark':
   hdfs_hostname => $::fqdn,
+  historyserver_hostname => $::fqdn,
 }
 
 node default {
@@ -32,7 +33,8 @@ node default {
   include site_hadoop::devel::hadoop
   include spark::frontend
   include spark::hdfs
+  include spark::historyserver
 
   Class['hadoop::namenode::service'] -> Class['site_hadoop::devel::hadoop']
-  Class['hadoop::namenode::service'] -> Class['spark::hdfs']
+  Class['hadoop::namenode::service'] -> Class['spark::historyserver::service']
 }
