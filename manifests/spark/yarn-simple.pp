@@ -15,6 +15,10 @@ class{'hadoop':
 class{'spark':
   hdfs_hostname => $::fqdn,
   historyserver_hostname => $::fqdn,
+  environments => {
+    'SPARK_DAEMON_MEMORY' => '768m',
+    'TEST'                => '::undef',
+  },
 }
 
 node default {
