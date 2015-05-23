@@ -56,7 +56,7 @@ BOX=[
 	{ :name => 'deb-book',         :image => deb7_image, :manifest => 'bookkeeping/simple.pp', :memory => big_memory },
 	{ :name => 'deb-oozie',        :image => deb7_image, :manifest => 'oozie/simple.pp', :memory => big_memory },
 	{ :name => 'oozie-mysql',      :image => deb7_image, :manifest => 'oozie/mysql.pp', :memory => big_memory },
-	{ :name => 'oozie-postgresql', :image => deb7_image, :manifest => 'oozie/postgress.pp', :memory => big_memory },
+	{ :name => 'oozie-postgresql', :image => deb7_image, :manifest => 'oozie/postgresql.pp', :memory => big_memory },
 	{ :name => 'deb-pig',          :image => deb7_image, :manifest => 'pig/simple.pp', :memory => big_memory },
 	{ :name => 'deb-pig-hdfs',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => daemon_memory },
 	{ :name => 'deb-pig-yarn',     :image => deb7_image, :manifest => 'pig/cluster.pp', :memory => daemon_memory },
