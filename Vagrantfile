@@ -107,6 +107,10 @@ SCRIPT
   config.vm.synced_folder 'modules/', '/etc/puppet/modules'
   config.vm.synced_folder 'manifests/', '/etc/puppet/manifests'
 
+  config.vm.provider 'libvirt' do |lv|
+    lv.memory = big_memory
+  end
+
   config.vm.provider 'virtualbox' do |vb|
     vb.customize ['modifyvm', :id, '--memory', big_memory]
   end
@@ -124,6 +128,9 @@ SCRIPT
         end
       end
       if box[:memory]
+        mach.vm.provider 'libvirt' do |lv|
+          lv.memory = box[:memory]
+        end
         mach.vm.provider 'virtualbox' do |vb|
           vb.customize ['modifyvm', :id, '--memory', box[:memory]]
         end
