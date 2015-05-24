@@ -13,3 +13,6 @@ elif grep -q '^\(RedHat\|CentOS\)' /etc/issue; then
   `dirname $0`/rhel6-puppet.sh
   `dirname $0`/redhat-update.sh
 fi
+# workaround problem with libvirt+KVM
+ifdown eth1
+ifup eth1
