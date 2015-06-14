@@ -32,6 +32,12 @@ Machines can be launch with <tt>vagrant up MACHINE</tt>, or there is convenient 
     make -j3 debs
     make -j3 feds
 
+    #cluster (high availability)
+    make -j3 debs-ha
+    #then on each machine:
+    # puppet apply /vagrant/manifests/ha2.pp
+    # puppet apply /vagrant/manifests/ha3.pp
+
 ## Hadoop Accounting
     # single node
     make deb-acc

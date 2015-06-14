@@ -7,10 +7,11 @@ debs_acc=deb-acc-hdfs deb-acc-yarn deb-acc-node
 debs_pig=deb-pig-hdfs deb-pig-yarn deb-pig-node
 debs_zoo=deb-zoo1 deb-zoo2 deb-zoo3
 debs_spark=deb-spark-hdfs deb-spark-yarn deb-spark-node deb-spark-frontend
+debs_ha=deb-hamaster1 deb-hamaster2 deb-hanode
 
 all: deb
 
-fed fed-plain $(feds) fed-hive fed-hbase fed-hbase-gates $(feds_hive) fed-acc fed-book $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase deb-hbase-gates $(debs_hive) hive-mysql hive-postgresql deb-acc deb-book $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig) hive-ultrasimple $(debs_zoo) deb-spark $(debs_spark):
+fed fed-plain $(feds) fed-hive fed-hbase fed-hbase-gates $(feds_hive) fed-acc fed-book $(feds_acc) deb deb-plain $(debs) deb-hive deb-hbase deb-hbase-gates $(debs_hive) hive-mysql hive-postgresql deb-acc deb-book $(debs_acc) deb-oozie oozie-mysql oozie-postgresql deb-pig $(debs_pig) hive-ultrasimple $(debs_zoo) deb-spark $(debs_spark) $(debs_ha):
 	vagrant up $@
 
 feds: $(feds)
@@ -30,3 +31,5 @@ debs-pig: $(debs_pig)
 debs-zoo: $(debs_zoo)
 
 debs-spark: $(debs_spark)
+
+debs-ha: $(debs_ha)
